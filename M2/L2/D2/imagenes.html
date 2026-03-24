@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Imágenes y figuras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Ejemplo de imágenes</h1>
+
+    <!-- Imagen simple -->
+    <img src="./img/Goku.png" alt="Ejemplo de imagen">
+    <p>Pie de figura explicando la imagen</p>
+
+    <!-- Imagen adaptable -->
+    <picture>
+      <source srcset="./img/Goku.png" media="(min-width:600px)">
+      <img src="./img/Goku2.jpg" alt="Imagen adaptable">
+    </picture>
+
+    <!-- Figura con pie descriptivo --> 
+    <figure>
+      <img src="./img/Goku.png" alt="Figura de ejemplo">
+      <figcaption>Pie de figura explicando la imagen</figcaption>
+    </figure>
+  </body>
+</html>
