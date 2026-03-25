@@ -1,0 +1,147 @@
+/* style.css */
+
+:root {
+    --primary-color: #2563eb;
+    --dark-color: #1e293b;
+    --light-bg: #f8fafc;
+    --text-main: #334155;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- ESTILOS PARA DESKTOP (POR DEFECTO) --- */
+
+.navbar {
+    background: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e293b 0%, #2563eb 100%);
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: violet;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 30px;
+    margin-top: -60px; /* Efecto sobrepuesto */
+    padding-bottom: 60px;
+}
+
+.card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.footer {
+    padding: 50px 0;
+    background: var(--dark-color);
+    color: var(--white);
+    text-align: center;
+}
+
+/* --- MEDIA QUERIES (PARA MÓVIL Y TABLET) --- */
+
+/* Tablets y pantallas medianas (menor a 992px) */
+@media (max-width: 992px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* Bajamos a 2 columnas */
+        margin-top: 20px; /* Quitamos el efecto sobrepuesto para evitar problemas de espacio */
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+        color: yellow;
+    }
+}
+
+/* Móviles (menor a 600px) */
+@media (max-width: 600px) {
+    .navbar .container {
+        flex-direction: column; /* Apilamos logo y links */
+        gap: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        color: cyan;
+    }
+
+    .services {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+
+    .card {
+        padding: 25px;
+    }
+}

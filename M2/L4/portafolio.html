@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Johnson | Portfolio Interactivo</title>
+    <style>
+        :root {
+            /* MODO OSCURO (Default) */
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-color: #2dd4bf; 
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --side-text-op: 0.03;
+        }
+
+        [data-theme="light"] {
+            /* MODO CLARO */
+            --bg-dark: #f1f5f9;
+            --bg-card: #ffffff;
+            --accent-color: #0d9488;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --side-text-op: 0.06;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Botón de cambio de tema */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-color);
+            color: var(--text-main);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.2rem;
+        }
+
+        /* Texto Lateral Decorativo */
+        .side-text {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            opacity: var(--side-text-op);
+            white-space: nowrap;
+            text-transform: uppercase;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .left-text { left: -20px; writing-mode: vertical-rl; transform: rotate(180deg) translateY(50%); }
+        .right-text { right: -20px; writing-mode: vertical-rl; transform: translateY(-50%); }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            text-align: center;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .hello-badge {
+            background: var(--bg-card);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        h1 span { color: var(--accent-color); }
+
+        /* Sección Hero Layout */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Testimonio / Ventana de Chat Izquierda */
+        .chat-container {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .message-bubble {
+            background: var(--bg-dark);
+            padding: 12px 15px;
+            border-radius: 15px 15px 15px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: var(--accent-color);
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Imagen Central */
+        .profile-container {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            flex-shrink: 0;
+        }
+
+        .blob-bg {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 260px;
+            background-color: var(--accent-color);
+            border-radius: 50% 50% 10% 10%;
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .profile-img {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            z-index: 2;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        }
+
+        /* Botones Derecha */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+            align-items: center;
+            min-width: 200px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            width: 180px;
+            text-align: center;
+        }
+
+        .btn-primary { background-color: var(--accent-color); color: #000; }
+        .btn-outline { border: 1px solid var(--accent-color); color: var(--accent-color); }
+        .btn:hover { transform: scale(1.05); opacity: 0.9; }
+
+        /* Navegación Inferior Estilo Buscador */
+        .nav-search {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 25px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .search-placeholder {
+            color: var(--text-muted);
+            text-align: left;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            padding-left: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            background: var(--bg-dark);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 850px) {
+            .hero-section { flex-direction: column; }
+            .chat-container { width: 100%; order: 2; }
+            .profile-container { order: 1; }
+            .cta-buttons { order: 3; flex-direction: row; justify-content: center; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+
+    <div class="side-text left-text">DAVID JOHNSON</div>
+    <div class="side-text right-text">WEB DEVELOPER</div>
+
+    <div class="container">
+        <div class="hello-badge">Hello!</div>
+        <h1>I'm <span>David,</span><br>Web Developer</h1>
+
+        <div class="hero-section">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span id="chat-user">System</span>
+                    <span>Online Now</span>
+                </div>
+                <div class="message-bubble">
+                    <span id="typing-text" class="typing">Hola, soy David. Haz clic abajo para conocerme mejor...</span>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <div class="blob-bg"></div>
+                <img src="https://i.imgur.com/8K9mS9I.png" alt="David" class="profile-img">
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Download CV</a>
+                <a href="#" class="btn btn-outline">Let's Talk</a>
+            </div>
+        </div>
+
+        <div class="nav-search">
+            <div class="search-placeholder">Ask me about my skills or experience...</div>
+            <div class="nav-links">
+                <div class="nav-item" onclick="loadContent('about')">📄 About Me</div>
+                <div class="nav-item" onclick="loadContent('skills')">⚙️ Skills</div>
+                <div class="nav-item" onclick="loadContent('projects')">📚 Projects</div>
+                <div class="nav-item" onclick="loadContent('clients')">👥 Clients</div>
+                <div class="nav-item" onclick="loadContent('contact')">✉️ Contact</div>
+            </div>
+        </div>
+
+        <footer>
+            Built with HTML, CSS and JS Interactivity · 2026
+        </footer>
+    </div>
+
+    <script>
+        const content = {
+            about: "Soy un desarrollador Full Stack con enfoque en UX. Transformo ideas complejas en productos digitales fluidos y escalables.",
+            skills: "Experto en Python, React, y Node.js. También manejo herramientas de diseño como Figma para prototipado rápido.",
+            projects: "Desde landing pages minimalistas hasta aplicaciones SaaS completas. Siempre enfocado en el rendimiento y la conversión.",
+            clients: "He trabajado con startups de Chile y empresas internacionales, optimizando su presencia digital.",
+            contact: "¡Hablemos! Puedes enviarme un correo a david@dev.com o contactarme directamente por LinkedIn."
+        };
+
+        let isTyping = false;
+
+        function loadContent(key) {
+            if (isTyping) return;
+            
+            // Marcar botón activo
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const text = content[key];
+            const displayElement = document.getElementById('typing-text');
+            const userLabel = document.getElementById('chat-user');
+            
+            userLabel.innerText = "David Johnson";
+            displayElement.innerHTML = "";
+            displayElement.classList.add('typing');
+            
+            let i = 0;
+            isTyping = true;
+
+            function typeWriter() {
+                if (i < text.length) {
+                    displayElement.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 25);
+                } else {
+                    displayElement.classList.remove('typing');
+                    isTyping = false;
+                }
+            }
+            typeWriter();
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeBtn');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                btn.innerText = '☀️';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerText = '🌙';
+            }
+        }
+    </script>
+</body>
+</html>

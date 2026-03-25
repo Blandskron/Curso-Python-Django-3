@@ -1,0 +1,31 @@
+/* reset.css */
+
+/* Eliminamos márgenes y paddings de todo, y forzamos el modelo de caja */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Evitamos que las imágenes se desborden y quitamos bordes de links */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Quitamos estilos de lista y subrayados de links */
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Aseguramos que el cuerpo ocupe el alto de la pantalla */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    font-family: sans-serif; /* Una fuente base para que no se vea "viejo" */
+}
