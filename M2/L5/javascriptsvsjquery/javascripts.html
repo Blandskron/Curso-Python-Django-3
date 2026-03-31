@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo JS</title>
+</head>
+<body>
+
+  <h2>Suma con JavaScript</h2>
+  <button id="btnSumar">Sumar</button>
+
+  <script>
+    document.getElementById("btnSumar").addEventListener("click", function() {
+      const a = 10;
+      const b = 5;
+
+      console.log("Valor de a:", a);
+      console.log("Valor de b:", b);
+
+      const resultado = a + b;
+
+      console.log("Resultado:", resultado);
+      alert("Resultado: " + resultado);
+    });
+  </script>
+
+</body>
+</html>

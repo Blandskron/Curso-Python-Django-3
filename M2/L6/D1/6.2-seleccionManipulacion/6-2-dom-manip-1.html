@@ -27,6 +27,19 @@
         );
       });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Botón para cambiar texto simple (.text() -> .textContent)
+      document.getElementById("btn-texto").addEventListener("click", function () {
+        document.getElementById("parrafo-original").textContent = "Nuevo texto simple usando .textContent";
+      });
+
+      // Botón para cambiar HTML (.html() -> .innerHTML)
+      document.getElementById("btn-html").addEventListener("click", function () {
+        document.getElementById("parrafo-original").innerHTML = 
+          'Texto con <strong>formato</strong> insertado usando .innerHTML';
+      });
+    });
   </script>
 </body>
 </html>

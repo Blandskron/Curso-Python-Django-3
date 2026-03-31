@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo JS</title>
+</head>
+<body>
+
+  <h1>Saludo</h1>
+  <input type="text" id="nombre" placeholder="Escribe tu nombre">
+  <button onclick="saludar()">Saludar</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function saludar() {
+      const input = document.getElementById("nombre");
+      const resultado = document.getElementById("resultado");
+
+      const nombre = input.value;
+
+      resultado.innerText = "Hola, " + nombre + "!";
+    }
+  </script>
+
+</body>
+</html>
