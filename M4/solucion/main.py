@@ -1,0 +1,24 @@
+"""
+Punto de entrada principal de la aplicación.
+
+Este módulo inicia la ejecución del sistema de e-commerce
+por consola, delegando el control a la clase Tienda.
+"""
+
+from app.tienda import Tienda
+from utils.logger import LoggerTXT
+
+logger = LoggerTXT()
+
+
+def main():
+    """
+    Función principal que inicia la aplicación.
+    """
+    tienda = Tienda()
+    tienda.ejecutar()
+
+
+# --- Ejecutar ---
+if __name__ == "__main__":
+    main()
