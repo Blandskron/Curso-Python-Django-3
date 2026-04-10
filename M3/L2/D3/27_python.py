@@ -16,3 +16,9 @@ persona["edad"] = 31
 
 for clave, valor in persona.items():
     print(clave, "=>", valor)
+
+for clave in persona.keys():
+    print("Clave:", clave)
+
+for valor in persona.values():
+    print("Valor:", valor)
