@@ -6,3 +6,4 @@ if numero < 0:
     print("¡Le he dicho que escriba un número positivo!")
 
 print(f"Ha escrito el número {numero}")
+print("Ha escrito el número ", numero)  # otra forma de imprimir el número
