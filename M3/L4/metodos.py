@@ -10,6 +10,7 @@ lista.insert(0, 0)                # inserta por índice
 lista.remove(3)                   # elimina por valor
 ultimo = lista.pop()              # elimina y retorna último
 lista.pop(0)                      # elimina por índice
+del lista[0]                      # elimina por índice
 indice = lista.index(4)           # obtiene índice
 conteo = lista.count(2)           # cuenta apariciones
 lista.sort()                      # ordena

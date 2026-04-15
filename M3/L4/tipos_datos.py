@@ -18,10 +18,10 @@ nulo = None                  # NoneType
 # -------------------------
 
 # Lista (mutable, ordenada, admite duplicados)
-lista = [1, 2, 3, "texto", True]
+lista = [1, 2, 3.14, "texto", True]
 
 # Tupla (inmutable, ordenada, admite duplicados)
-tupla = (1, 2, 3, "texto", True)
+tupla = (1, 2, 3.14, "texto", True)
 
 # Conjunto / Set (mutable, no ordenado, no admite duplicados)
 conjunto = {1, 2, 3, 3, 4}
