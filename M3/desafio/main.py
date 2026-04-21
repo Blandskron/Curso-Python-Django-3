@@ -1,20 +1,16 @@
-# Diccionario de Productos
-catalogo_productos = {
-    1: {"nombre": "Camiseta", "categoria": "Ropa", "precio": 20},
-    2: {"nombre": "Pantalón", "categoria": "Ropa", "precio": 30},
-    3: {"nombre": "Zapatos", "categoria": "Calzado", "precio": 50},
-    4: {"nombre": "Bolso", "categoria": "Accesorio", "precio": 40},
-    5: {"nombre": "Reloj", "categoria": "Accesorio", "precio": 60},
-}
+from modulos.catalogo import catalogo_productos
+from modulos.mostrar_catalogo import mostrar_catalogo
+from modulos.buscar_producto import buscar_producto
+from modulos.carrito import carrito, agregar_al_carrito, ver_carrito, vaciar_carrito
 
 # ciclo hasta seleccionar salir
 while True:
-
     # Menu Principal
     print(
         """
+        ==============================
         Bienvenido/a a tu Ecommerce
-
+        ==============================
         1- Ver catálogo de productos
         2- Buscar producto por nombre o categoría
         3- Agregar producto al carrito
@@ -27,48 +23,29 @@ while True:
     opcion = input("Selecciona una opción: ")
 
     if opcion == "1":
-        # Ver catálogo de productos
-        print("id - Nombre - Categoría - Precio")
-        for id, producto in catalogo_productos.items():
-            print(f"{id}: {producto['nombre']} - {producto['categoria']} - ${producto['precio']}")
-
+        mostrar_catalogo(catalogo_productos)
+        
     elif opcion == "2":
-        # Buscar producto por nombre o categoría
-        tipo_busqueda = input("¿Quieres buscar por nombre o categoría? (nombre/categoria): ")
-
-        if tipo_busqueda == "nombre":
-            busqueda = input("Ingresa el nombre del producto: ")
-
-            for id, producto in catalogo_productos.items():
-                if producto[tipo_busqueda] == busqueda:
-                    print(f"{id}: {producto['nombre']} - {producto['categoria']} - ${producto['precio']}")
-
-        elif tipo_busqueda == "categoria":
-            busqueda = input("Ingresa la categoria del producto: ")
-
-            for id, producto in catalogo_productos.items():
-                if producto[tipo_busqueda] == busqueda:
-                    print(f"{id}: {producto['nombre']} - {producto['categoria']} - ${producto['precio']}")
-                elif producto[tipo_busqueda] != busqueda:
-                    continue 
-                else:
-                    print("No se encontraron productos con esa categoria")
+        tipo_busqueda = input("¿Quieres buscar por nombre o categoría? (nombre/categoria): ").lower()
+        if tipo_busqueda in ["nombre", "categoria"]:
+            buscar_producto(tipo_busqueda, catalogo_productos)
         else:
             print("Opción no válida. Por favor, selecciona 'nombre' o 'categoria'.")
-    
 
     elif opcion == "3":
-        # Agregar producto al carrito
-        pass
+        mostrar_catalogo(catalogo_productos)
+        agregar_al_carrito(catalogo_productos, carrito)
+
     elif opcion == "4":
-        # Ver carrito y total
-        pass
+        ver_carrito(carrito)
+
     elif opcion == "5":
-        # Vaciar carrito
-        pass
+        confirmar = input("¿Estás seguro de vaciar el carrito? (s/n): ")
+        if confirmar.lower() == 's':
+            vaciar_carrito(carrito)
+
     elif opcion == "0":
-        # Salir
-        print("¡Hasta luego!")
+        print("¡Gracias por tu visita. Hasta luego!")
         break
     else:
         print("Opción no válida. Por favor, selecciona una opción válida.")
