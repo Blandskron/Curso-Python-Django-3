@@ -17,5 +17,8 @@ class Coche:
         print(f"{self.marca} en marcha")
 
 motor_pequeno = Motor(90)
+motor_grande = Motor(200)
 auto = Coche("Toyota", motor_pequeno)
+auto2 = Coche("Honda", motor_grande)
 auto.arrancar()
+auto2.arrancar()
