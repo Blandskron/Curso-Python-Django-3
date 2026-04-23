@@ -4,15 +4,16 @@
 
 class Libro:
     def __init__(self, titulo):
-        self.titulo = titulo
+        self.title = titulo
 
 class Estudiante:
     def __init__(self, nombre):
-        self.nombre = nombre
+        self.name = nombre
 
     def leer(self, libro: Libro):
-        print(f"{self.nombre} lee {libro.titulo}")
+        print(f"{self.name} lee el libro {libro.title}")
 
 libro = Libro("POO con Python")
+libro2 = Libro("Estructuras de Datos en Python")
 alumno = Estudiante("Ana")
-alumno.leer(libro)  # asociación: Estudiante conoce Libro
+alumno.leer(libro2)  # asociación: Estudiante conoce Libro

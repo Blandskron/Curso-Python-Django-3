@@ -1,0 +1,42 @@
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+hide circle
+
+entity "Alumno" as alumno {
+    * id_alumno : INT <<PK>>
+    --
+    nombre : VARCHAR(50)
+    apellido : VARCHAR(50)
+    fecha_nacimiento : DATE
+}
+
+entity "Profesor" as profesor {
+    * id_profesor : INT <<PK>>
+    --
+    nombre : VARCHAR(50)
+    especialidad : VARCHAR(50)
+}
+
+entity "Curso" as curso {
+    * id_curso : INT <<PK>>
+    --
+    nombre_curso : VARCHAR(50)
+    id_profesor : INT <<FK>>
+}
+
+entity "Nota" as nota {
+    * id_nota : INT <<PK>>
+    --
+    valor : DECIMAL(4,2)
+    id_alumno : INT <<FK>>
+    id_curso : INT <<FK>>
+}
+
+' Relaciones
+profesor ||--o{ curso : "dicta"
+alumno ||--o{ nota : "recibe"
+curso ||--o{ nota : "contiene"
+
+@enduml
