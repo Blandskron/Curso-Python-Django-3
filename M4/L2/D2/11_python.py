@@ -63,7 +63,13 @@ class Pedido:
 
 prod1 = Producto("Teclado", 30)
 prod2 = Producto("Mouse", 20)
-pedido = Pedido(DescuentoPorcentaje(0.1))
+pedido = Pedido(DescuentoPorcentaje(0.2))
 pedido.agregar(LineaPedido(prod1, 2))
 pedido.agregar(LineaPedido(prod2, 1))
 print(pedido.total_neto)
+
+"""
+30 * 2 + 20 * 1 = 80
+Descuento: 80 * 0.1 = 8
+Total neto: 80 - 8 = 72
+"""

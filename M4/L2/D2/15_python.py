@@ -22,3 +22,27 @@ class Fecha:
 f1 = Fecha(2024, 5, 1)
 f2 = Fecha.from_string("2024-05-01")
 f3 = Fecha.hoy()
+
+"""
+class Fecha:
+    def __init__(self, anio, mes, dia):
+        self.anio = anio
+        self.mes = mes
+        self.dia = dia
+
+class FechaString:
+    def __init__(self, cls, texto):
+        anio, mes, dia = map(int, texto.split("-"))
+        return cls(anio, mes, dia)
+
+class FechaHoy:
+    def __init__(self, cls):
+        from datetime import date
+        d = date.today()
+        return cls(d.year, d.month, d.day)
+
+
+f1 = Fecha(2024, 5, 1)
+f2 = FechaString("2024-05-01")
+f3 = FechaHoy()
+"""
