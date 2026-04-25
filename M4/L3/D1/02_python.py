@@ -13,3 +13,15 @@ class CuentaBancaria:
 
     def __validar_pin(self, pin: str) -> bool:
         return pin == self.__pin
+
+"""
+CuentaBancaria
+_______________
++ numero: str
+# _saldo: float
+- __pin: str
+_______________
++ depositar(monto: float) -> None
++ _aplicar_cargo(monto: float) -> None
++ __validar_pin(pin: str) -> bool
+"""

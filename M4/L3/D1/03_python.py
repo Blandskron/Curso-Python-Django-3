@@ -5,3 +5,12 @@ class Sesion:
     def __init__(self, usuario: str):
         self.usuario = usuario
         Sesion.sesiones_activas += 1
+
+"""
+Sesion
+_______________
+- sesiones_activas: int (estático)
+_______________
+- usuario: str
++ sesiones_activas -> int
+"""

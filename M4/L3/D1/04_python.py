@@ -10,3 +10,12 @@ class Persona:
     def edad(self) -> int:  # /edad derivada de fecha_nacimiento
         hoy = date.today()
         return hoy.year - self._fecha_nacimiento.year
+
+"""
+Persona
+______________
+- nombre: str
+- _fecha_nacimiento: date
+_______________
++ edad() -> int # Calcular edad segun date time today - fecha_nacimiento
+"""

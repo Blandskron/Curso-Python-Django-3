@@ -12,3 +12,12 @@ class EstudianteBidireccional:
     def inscribir(self, curso: CursoBidireccional) -> None:
         self.cursos.append(curso)
         curso.estudiantes.append(self)
+
+class Estudiante:
+    pass
+
+class Curso:
+    pass
+
+class CursoEstudiante:
+    pass

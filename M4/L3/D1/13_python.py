@@ -14,3 +14,11 @@ class Biblioteca:
     def adquirir_libro(self, titulo: str, autor: str, isbn: str) -> None:
         nuevo = LibroBiblioteca(titulo, autor, isbn)
         self._catalogo.append(nuevo)
+
+"""
+Biblioteca
+id    | nombreLibro
+1     | Harry Potter y la Piedra Filosofal
+2     | El Señor de los Anillos
+3     | El Código Da Vinci
+""" 

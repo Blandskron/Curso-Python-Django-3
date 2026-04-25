@@ -7,3 +7,13 @@ class Libro:
 
     def get_info(self) -> str:
         return f"{self.isbn} - '{self.titulo}' ({self.autor})"
+
+"""
+Libro
+_______________
+- titulo: str
+- autor: str
+- isbn: str
+_______________
++ get_info() -> str
+"""

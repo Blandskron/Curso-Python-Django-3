@@ -1,0 +1,61 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam monochrome true
+
+class Producto {
+  - nombre: String
+  - precio: Float
+  + get_nombre(): String
+  + get_precio(): Float
+  + set_precio(precio: Float): void
+}
+
+class LineaPedido {
+  - producto: Producto
+  - cantidad: Integer
+  + sub_total(): Float
+}
+
+class Pedido {
+  - items: List<LineaPedido>
+  - descuento: EstrategiaDescuento
+  + agregar(item: LineaPedido): void
+  + total_bruto(): Float
+  + total_descuento(): Float
+  + total_neto(): Float
+}
+
+interface EstrategiaDescuento <<interface>> {
+  + calcular(total: Float): Float
+}
+
+class DescuentoPorcentaje {
+  - porcentaje: Float
+  + calcular(total: Float): Float
+}
+
+' Relaciones
+LineaPedido "1" o-- "1" Producto : contiene
+Pedido "1" *-- "many" LineaPedido : compuesto por
+Pedido "1" o-- "1" EstrategiaDescuento : usa
+DescuentoPorcentaje ..|> EstrategiaDescuento : implementa
+
+note right of LineaPedido::sub_total
+  Precio x Cantidad
+end note
+
+note right of Pedido::total_bruto
+  Suma total de items[]
+end note
+
+note right of Pedido::total_descuento
+  descuento.calcular(total_bruto)
+end note
+
+note right of Pedido::total_neto
+  total_bruto - total_descuento
+end note
+
+@endum
