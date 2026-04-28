@@ -6,3 +6,12 @@ class TicketSoporte:
         TicketSoporte._contador += 1
         self.id = TicketSoporte._contador
         self.asunto = asunto
+
+"""
+TicketSoporte
+________________________
+contador (id) | asunto
+________________________
+0             | "Problema con la impresora"
+1             | "Error en el software"
+"""
