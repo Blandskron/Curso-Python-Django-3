@@ -18,3 +18,9 @@ class Coche(VehiculoTerrestre):
 class CocheDeportivo(Coche):
     def mover(self) -> str:
         return "El coche deportivo acelera a gran velocidad"
+
+auto = Vehiculo()
+print(auto.mover())
+
+porche = CocheDeportivo()
+print(porche.mover())
