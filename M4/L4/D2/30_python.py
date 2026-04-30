@@ -14,3 +14,11 @@ class ReporteVentas(ExportableCSVMixin, ReporteBase):
     def __init__(self, titulo: str, total: float):
         super().__init__(titulo)
         self.total = total
+
+enero = ReporteVentas("Enero", 1000000)
+febrero = ReporteVentas("Febrero", 2000000)
+
+meses = [enero, febrero]
+
+for mes in meses:
+    print(mes.exportar_csv())

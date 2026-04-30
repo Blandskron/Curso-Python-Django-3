@@ -24,3 +24,12 @@ class ProcesadorArchivo(ABC):
 class ProcesadorMayus(ProcesadorArchivo):
     def _transformar(self, contenido: str) -> str:
         return contenido.upper()
+
+class ProcesadorMinuscula(ProcesadorArchivo):
+    def _transformar(self, contenido: str) -> str:
+        return contenido.lower()
+    
+mayuscula = ProcesadorMayus()
+minuscula = ProcesadorMinuscula()
+print(mayuscula._transformar("TeXtO En DiFeReNtE"))
+print(minuscula._transformar("TeXtO En DiFeReNtE"))

@@ -9,3 +9,6 @@ class FiltroMayus(Filtro):
     def procesar(self, dato: str) -> str:
         base = super().procesar(dato)
         return base.upper()
+
+ejemplo = FiltroMayus()
+print(ejemplo.procesar("          Hola hemos recibido tu mensaje  "))
