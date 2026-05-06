@@ -9,4 +9,5 @@ try:
         f.write("{}\n")
 except FileExistsError:
     # archivo ya existe, no se pisa
-    pass
+    print(f"El archivo {ruta} ya existe.")
+

@@ -3,3 +3,4 @@
 import sys
 
 sys.stdout.write("Mensaje directo en stdout\n")
+print("Mensaje directo en stdout\n")

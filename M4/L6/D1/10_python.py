@@ -6,5 +6,5 @@ lineas = [
     "2,Usuario conectado,Media\n",
 ]
 
-with open("bitacora.csv", "w", encoding="utf-8") as f:
+with open("data/bitacora.csv", "w", encoding="utf-8") as f:
     f.writelines(lineas)
