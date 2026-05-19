@@ -1,0 +1,1 @@
+-- Reservado para migraciones futuras.
